@@ -10,6 +10,8 @@ uv = "*"
 ipykernel = "*"
 pandas = "*"
 numpy = "*"
+matplotlib = "*"
+seaborn = "*"
 
 [dev-packages]
 
