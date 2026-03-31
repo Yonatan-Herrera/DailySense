@@ -7,6 +7,9 @@ name = "pypi"
 supabase = "*"
 fastapi = "*"
 uv = "*"
+ipykernel = "*"
+pandas = "*"
+numpy = "*"
 
 [dev-packages]
 
