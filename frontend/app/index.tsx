@@ -270,4 +270,3 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     paddingTop: 8,
   },
-});

@@ -1,81 +1,134 @@
-import React, { useState } from "react";
-import { Text, View, FlatList, StyleSheet, TextInput, Pressable, Image} from "react-native";
+// Activity page
+import React from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  Pressable,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Ionicons } from "@expo/vector-icons";
 
-const DATA = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    time: '9:01am',
-    title: 'Wakes Up',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    time: '9:33am',
-    title: 'Let Goku out for the toilet',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    time: '9:58am',
-    title: 'Morning food',
-  },
+const activities = [
+  { id: "1", time: "9:00am", event: "Wakes Up" },
+  { id: "2", time: "9:45am", event: "Let Goku out for the toilet" },
+  { id: "3", time: "10:02am", event: "Morning food" },
+  { id: "4", time: "10:54am", event: "Morning short stroll" },
+  { id: "5", time: "11:20am", event: "Goku’s shower" },
+  { id: "6", time: "12:13pm", event: "Resting" },
+  { id: "7", time: "2:12pm", event: "Wakes up" },
+  { id: "8", time: "2:28pm", event: "Napping" },
+  { id: "9", time: "4:06pm", event: "Drive Goku to nearby park" },
+  { id: "10", time: "4:37pm", event: "Goku playtime at park" },
+  { id: "11", time: "4:41pm", event: "Evening meal" },
+  { id: "12", time: "5:29pm", event: "Let Goku out for the toilet" },
 ];
 
-export default function Activity() {
+export default function ActivityScreen() {
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.headerTitle}>Activity</Text>
+        </View>
 
-    const ItemSeparator = () => (
-        <View style={styles.itemSeparator} />
-    );
-
-    return(
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: "#f5f5f5",
-        alignItems: "center",
-        paddingTop: 80,
-        paddingHorizontal: 30,
-      }}>
-      <Text style={{ 
-        fontSize: 20,
-        fontWeight: "600",
-        marginBottom: 40,
-        color: "#000",}}>Activity</Text>
-      <FlatList
-        data={DATA}
-        renderItem={({ item }) => (
-            <View style={{ flexDirection: 'row', padding: 10 }}>
-                <View style={styles.itemContainer}>
-                    <Text style={{ fontWeight: 'bold' }}>{item.time}</Text>
-                </View>
-                <View style={styles.itemContainer}>
-                    <Text>{item.title}</Text>
-                </View>
+        <FlatList
+          data={activities}
+          keyExtractor={(item) => item.id}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.listContent}
+          renderItem={({ item }) => (
+            <View style={styles.row}>
+              <Text style={styles.time}>{item.time}</Text>
+              <Text style={styles.event}>{item.event}</Text>
             </View>
-        )}
-        keyExtractor={item => item.id}
-        ItemSeparatorComponent={ItemSeparator}
-        ListHeaderComponent={ItemSeparator}
-        ListFooterComponent={ItemSeparator}
-      />
-    </View>
-    );
+          )}
+        />
+
+        <View style={styles.bottomNav}>
+          <Pressable>
+            <Ionicons name="pulse" size={28} color="#7c3aed" />
+          </Pressable>
+
+          <Pressable>
+            <Ionicons name="stats-chart" size={28} color="#111" />
+          </Pressable>
+
+          <Pressable>
+            <Ionicons name="home" size={28} color="#111" />
+          </Pressable>
+
+          <Pressable>
+            <Ionicons name="warning-outline" size={28} color="#111" />
+          </Pressable>
+
+          <Pressable>
+            <Ionicons name="person-outline" size={28} color="#111" />
+          </Pressable>
+        </View>
+      </View>
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
-  item: {
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
+  safeArea: {
+    flex: 1,
+    backgroundColor: "#f7f7f7",
   },
-  itemContainer: {
-    flex: 1, // Ensures items take equal width
-    borderRadius: 5,
+  container: {
+    flex: 1,
+    backgroundColor: "#f7f7f7",
   },
-  itemSeparator: {
-    height: 1, // Line thickness
-    backgroundColor: '#E6E6E6', // Line color
-    width: '100%', // Line width
+  header: {
+    height: 80,
+    justifyContent: "center",
+    alignItems: "center",
+    borderBottomWidth: 1,
+    borderBottomColor: "#e5e5e5",
+    backgroundColor: "#f7f7f7",
   },
-  title: {
-    fontSize: 32,
+  headerTitle: {
+    fontSize: 28,
+    fontWeight: "800",
+    color: "#111",
+  },
+  listContent: {
+    paddingBottom: 110,
+  },
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+    minHeight: 70,
+    paddingHorizontal: 22,
+    borderBottomWidth: 1,
+    borderBottomColor: "#e8e8e8",
+    backgroundColor: "#f7f7f7",
+  },
+  time: {
+    width: 105,
+    fontSize: 18,
+    fontWeight: "500",
+    color: "#111",
+  },
+  event: {
+    flex: 1,
+    fontSize: 18,
+    color: "#7a7a7a",
+  },
+  bottomNav: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: 88,
+    backgroundColor: "#fff",
+    borderTopWidth: 1,
+    borderTopColor: "#e5e5e5",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    paddingBottom: 10,
   },
 });
