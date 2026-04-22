@@ -12,6 +12,7 @@ pandas = "*"
 numpy = "*"
 matplotlib = "*"
 seaborn = "*"
+uvicorn = "*"
 
 [dev-packages]
 
