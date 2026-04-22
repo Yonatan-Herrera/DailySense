@@ -3,7 +3,10 @@
 #custom
 /backend/main.py
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 59501855f029db18e469a886703bfff4e4e41602
 # dependencies
 node_modules/
 *.ipynb
@@ -14,6 +17,7 @@ expo-env.d.ts
 dist/
 web-build/
 expo-env.d.ts
+/example
 
 
 # Native
