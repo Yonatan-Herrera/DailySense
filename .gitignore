@@ -1,5 +1,8 @@
 # Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
 
+#custom
+/backend/main.py
+
 # dependencies
 node_modules/
 
@@ -9,6 +12,7 @@ expo-env.d.ts
 dist/
 web-build/
 expo-env.d.ts
+/example
 
 # Native
 .kotlin/
