@@ -1,14 +1,14 @@
-// Activity page
 import React from "react";
 import {
   View,
   Text,
   StyleSheet,
   FlatList,
-  Pressable,
+  TouchableOpacity,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
 
 const activities = [
   { id: "1", time: "9:00am", event: "Wakes Up" },
@@ -47,25 +47,25 @@ export default function ActivityScreen() {
         />
 
         <View style={styles.bottomNav}>
-          <Pressable>
+          <TouchableOpacity onPress={() => router.replace("/activity")} activeOpacity={0.7}>
             <Ionicons name="pulse" size={28} color="#7c3aed" />
-          </Pressable>
+          </TouchableOpacity>
 
-          <Pressable>
-            <Ionicons name="stats-chart" size={28} color="#111" />
-          </Pressable>
+          <TouchableOpacity activeOpacity={0.7}>
+            <Ionicons name="stats-chart-outline" size={28} color="#111" />
+          </TouchableOpacity>
 
-          <Pressable>
+          <TouchableOpacity onPress={() => router.replace("/")} activeOpacity={0.7}>
             <Ionicons name="home" size={28} color="#111" />
-          </Pressable>
+          </TouchableOpacity>
 
-          <Pressable>
+          <TouchableOpacity onPress={() => router.replace("/alerts")} activeOpacity={0.7}>
             <Ionicons name="warning-outline" size={28} color="#111" />
-          </Pressable>
+          </TouchableOpacity>
 
-          <Pressable>
+          <TouchableOpacity onPress={() => router.replace("/profile")} activeOpacity={0.7}>
             <Ionicons name="person-outline" size={28} color="#111" />
-          </Pressable>
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>
@@ -73,14 +73,8 @@ export default function ActivityScreen() {
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: "#f7f7f7",
-  },
-  container: {
-    flex: 1,
-    backgroundColor: "#f7f7f7",
-  },
+  safeArea: { flex: 1, backgroundColor: "#f7f7f7" },
+  container: { flex: 1, backgroundColor: "#f7f7f7" },
   header: {
     height: 80,
     justifyContent: "center",

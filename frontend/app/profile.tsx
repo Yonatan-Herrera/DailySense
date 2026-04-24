@@ -51,9 +51,9 @@ export default function ProfileScreen() {
           <Text style={styles.sectionTitle}>Basic Info</Text>
           <View style={styles.groupCard}>
             <MenuRow
-                icon={<Ionicons name="information-circle-outline" size={28} color="#222" />}
-                label="Goku’s Information"
-                onPress={() => router.replace("/pet-info")}
+              icon={<Ionicons name="information-circle-outline" size={28} color="#222" />}
+              label="Goku’s Information"
+              onPress={() => router.replace("/pet-info")}
             />
             <MenuRow
               icon={<Ionicons name="settings-outline" size={28} color="#222" />}
@@ -62,6 +62,7 @@ export default function ProfileScreen() {
             <MenuRow
               icon={<Feather name="bell" size={28} color="#222" />}
               label="Notifications"
+              onPress={() => router.replace("/empty-alerts")}
             />
           </View>
 
