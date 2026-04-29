@@ -93,8 +93,11 @@ export default function ProfileScreen() {
             <Ionicons name="pulse-outline" size={28} color="#222" />
           </TouchableOpacity>
 
-          <TouchableOpacity activeOpacity={0.7}>
-            <Ionicons name="stats-chart-outline" size={28} color="#222" />
+          <TouchableOpacity
+            onPress={() => router.replace("/analytics-motion" as any)}
+            activeOpacity={0.7}
+          >
+            <Ionicons name="stats-chart-outline" size={26} color="#222" />
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => router.replace("/")} activeOpacity={0.7}>

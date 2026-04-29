@@ -99,7 +99,10 @@ export default function AlertsScreen() {
             <Ionicons name="pulse-outline" size={28} color="#222" />
           </TouchableOpacity>
 
-          <TouchableOpacity activeOpacity={0.7}>
+          <TouchableOpacity
+          onPress={() => router.replace("/analytics-motion" as any)}
+          activeOpacity={0.7}
+          >
             <Ionicons name="stats-chart-outline" size={28} color="#222" />
           </TouchableOpacity>
 

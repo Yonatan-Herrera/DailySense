@@ -51,8 +51,11 @@ export default function ActivityScreen() {
             <Ionicons name="pulse" size={28} color="#7c3aed" />
           </TouchableOpacity>
 
-          <TouchableOpacity activeOpacity={0.7}>
-            <Ionicons name="stats-chart-outline" size={28} color="#111" />
+          <TouchableOpacity
+            onPress={() => router.replace("/analytics-motion" as any)}
+            activeOpacity={0.7}
+          >
+            <Ionicons name="stats-chart-outline" size={28} color="#222" />
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => router.replace("/")} activeOpacity={0.7}>
