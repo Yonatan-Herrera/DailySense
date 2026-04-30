@@ -15,6 +15,7 @@ import {
   FontAwesome5,
   FontAwesome6,
 } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient"; // ADDED
 
 export default function Index() {
   return (
@@ -28,25 +29,37 @@ export default function Index() {
             <View style={styles.avatar}>
               <Ionicons name="person" size={36} color="#bdbdbd" />
             </View>
-            <Text style={styles.greeting}>Hello, Goku’s Owner</Text>
+            <Text style={styles.greeting}>Hello, Goku's Owner</Text>
           </View>
 
+          {/* MODIFIED: Wrapped content in LinearGradient, removed flat backgroundColor */}
           <TouchableOpacity
             activeOpacity={0.85}
             style={styles.alertCard}
             onPress={() => router.replace("/alerts")}
           >
-            <Ionicons name="warning-outline" size={38} color="#111" />
-            <Text style={styles.alertTitle}>Abnormal Heart Rhythm</Text>
-            <Text style={styles.alertSubtitle}>Tap for details.</Text>
+            <LinearGradient
+              colors={["#ff3b30", "#ffb3b3"]}
+              style={styles.alertGradient}
+            >
+              <Ionicons name="warning-outline" size={38} color="#111" />
+              <Text style={styles.alertTitle}>Abnormal Heart Rhythm</Text>
+              <Text style={styles.alertSubtitle}>Tap for details.</Text>
+            </LinearGradient>
           </TouchableOpacity>
 
           <View style={styles.grid}>
+            {/* MODIFIED: Added LinearGradient absoluteFill, removed flat backgroundColor */}
             <TouchableOpacity
-              style={[styles.smallCard, styles.activityCard]}
+              style={styles.smallCard}
               activeOpacity={0.85}
               onPress={() => router.replace("/activity")}
             >
+              <LinearGradient
+                colors={["#7ef0ff", "#dffafe"]}
+                style={StyleSheet.absoluteFill}
+                borderRadius={14}
+              />
               <View style={styles.cardTopRow}>
                 <Text style={styles.cardTitle}>Activity</Text>
                 <View style={styles.iconRow}>
@@ -59,55 +72,69 @@ export default function Index() {
                   />
                 </View>
               </View>
-
               <View style={styles.cardContent}>
                 <MaterialCommunityIcons name="chart-bar" size={70} color="#111" />
                 <Text style={styles.cardValue}>2000 steps</Text>
               </View>
             </TouchableOpacity>
 
+            {/* MODIFIED: Added LinearGradient absoluteFill, removed flat backgroundColor */}
             <TouchableOpacity
-              style={[styles.smallCard, styles.bpmCard]}
+              style={styles.smallCard}
               activeOpacity={0.85}
               onPress={() => router.replace("/bpm")}
             >
+              <LinearGradient
+                colors={["#d98aff", "#f3d6ff"]}
+                style={StyleSheet.absoluteFill}
+                borderRadius={14}
+              />
               <View style={styles.cardTopRow}>
                 <Text style={styles.cardTitle}>BPM</Text>
                 <Ionicons name="heart-outline" size={24} color="#111" />
               </View>
-
               <View style={styles.cardContent}>
                 <MaterialCommunityIcons name="chart-line" size={72} color="#111" />
                 <Text style={styles.cardValue}>115 BPM</Text>
               </View>
             </TouchableOpacity>
 
+            {/* MODIFIED: Added LinearGradient absoluteFill, removed flat backgroundColor */}
             <TouchableOpacity
-              style={[styles.smallCard, styles.tempCard]}
+              style={styles.smallCard}
               activeOpacity={0.85}
               onPress={() => router.replace("/temperature")}
             >
+              <LinearGradient
+                colors={["#a8ff80", "#dfffcf"]}
+                style={StyleSheet.absoluteFill}
+                borderRadius={14}
+              />
               <View style={styles.cardTopRow}>
                 <Text style={styles.cardTitle}>Temperature</Text>
                 <Feather name="thermometer" size={22} color="#111" />
               </View>
-
               <View style={styles.cardContent}>
                 <MaterialCommunityIcons name="chart-line" size={72} color="#111" />
                 <Text style={styles.cardValue}>99.5°F</Text>
               </View>
             </TouchableOpacity>
 
+            {/* MODIFIED: Added LinearGradient absoluteFill, removed flat backgroundColor */}
             <TouchableOpacity
-              style={[styles.smallCard, styles.foodCard]}
+              style={styles.smallCard}
               activeOpacity={0.85}
               onPress={() => router.replace("/food")}
             >
+              <LinearGradient
+                colors={["#f5c97a", "#faecd4"]}
+                style={StyleSheet.absoluteFill}
+                borderRadius={14}
+              />
               <View style={styles.cardTopRow}>
                 <Text style={styles.cardTitle}>Food Intake</Text>
                 <FontAwesome6 name="bowl-food" size={24} color="#111" />
               </View>
-
               <View style={styles.cardContent}>
                 <MaterialCommunityIcons name="chart-line" size={72} color="#111" />
                 <Text style={styles.cardValue}>415 kcal</Text>
@@ -182,21 +209,27 @@ const styles = StyleSheet.create({
     textDecorationLine: "underline",
     textDecorationColor: "#35a8ff",
   },
+  // MODIFIED: removed backgroundColor, added overflow hidden
   alertCard: {
     width: "100%",
     minHeight: 135,
     borderRadius: 14,
-    backgroundColor: "#ff4d4d",
-    justifyContent: "center",
-    alignItems: "center",
     marginBottom: 28,
-    paddingVertical: 18,
-    paddingHorizontal: 16,
+    overflow: "hidden",
     shadowColor: "#000",
     shadowOpacity: 0.18,
     shadowRadius: 8,
     shadowOffset: { width: 0, height: 4 },
     elevation: 6,
+  },
+  // ADDED: new style for the gradient wrapper inside alertCard
+  alertGradient: {
+    flex: 1,
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 18,
+    paddingHorizontal: 16,
   },
   alertTitle: {
     fontSize: 20,
@@ -217,11 +250,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     rowGap: 18,
   },
+  // MODIFIED: removed backgroundColor, added overflow hidden
   smallCard: {
     width: "47.5%",
     minHeight: 142,
     borderRadius: 14,
     padding: 10,
+    overflow: "hidden",
     shadowColor: "#000",
     shadowOpacity: 0.14,
     shadowRadius: 7,
@@ -229,10 +264,6 @@ const styles = StyleSheet.create({
     elevation: 5,
     justifyContent: "space-between",
   },
-  activityCard: { backgroundColor: "#b9f3ff" },
-  bpmCard: { backgroundColor: "#efc2ff" },
-  tempCard: { backgroundColor: "#c9ffb3" },
-  foodCard: { backgroundColor: "#f8dfb5" },
   cardTopRow: {
     flexDirection: "row",
     alignItems: "flex-start",
